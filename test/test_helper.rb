@@ -17,7 +17,7 @@ class User < ROM::Struct
   attribute :id,         Types::Integer
   attribute :name,       Types::String
   attribute :email,      Types::String
-  attribute? :has_pet,         Types::Bool
+  attribute? :has_pet,   Types::Bool
   attribute :created_at, Types::Time
 end
 
@@ -26,8 +26,8 @@ class AnonymizableUserSerializer < Hanami::Serializer::Base
 end
 
 class UserSerializer < Hanami::Serializer::Base
-  attribute :name,  Types::String.default { ''.freeze }
-  attribute :email, Types::String
+  attribute :name,        Types::String.default { ''.freeze }
+  attribute :email,       Types::String
   attribute? :subscribed, Types::Bool.default { false }
 end
 
@@ -55,6 +55,6 @@ class AvatarSerializer < Hanami::Serializer::Base
 end
 
 class NestedUserSerializer < Hanami::Serializer::Base
-  attribute :name, Types::String
-  attribute? :avatar,    AvatarSerializer.default { {}.freeze }
+  attribute :name,    Types::String
+  attribute? :avatar, AvatarSerializer.default { {}.freeze }
 end
