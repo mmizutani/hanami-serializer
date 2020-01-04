@@ -22,11 +22,12 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "dry-struct"
-  spec.add_dependency "dry-types"
+  spec.add_runtime_dependency "dry-struct", "~> 1.0"
+  spec.add_runtime_dependency "dry-types", "~> 1.0"
 
-  spec.add_development_dependency "hanami-model"
-  spec.add_development_dependency "bundler", "~> 1.13"
+  spec.add_development_dependency "rom-core", "~> 5.1.2"
+  spec.add_development_dependency "bundler", "~> 2.1"
+  spec.add_development_dependency "oj", "~> 3.10"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "minitest", "~> 5.0"
 end
