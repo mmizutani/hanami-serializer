@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'hanami/serializer'
+require 'rom/core'
+
+module Types
+  include Dry.Types()
+end
+
+Dry::Struct.load_extensions(:pretty_print)
+
+require 'irb'
+IRB.start(__FILE__)
