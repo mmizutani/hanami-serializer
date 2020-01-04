@@ -3,7 +3,7 @@ require 'json'
 module Hanami
   module Serializer
     class Base < Dry::Struct
-      constructor_type :weak
+      constructor_type :schema
 
       class << self
         def serialized_fields(attributes)
