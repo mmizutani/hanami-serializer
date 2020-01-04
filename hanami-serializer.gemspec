@@ -22,8 +22,8 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "dry-struct", "~> 0.4"
-  spec.add_dependency "dry-types", "~> 0.12"
+  spec.add_dependency "dry-struct", "~> 1.2.0"
+  spec.add_dependency "dry-types", "~> 1.2.0"
 
   spec.add_development_dependency "hanami-model"
   spec.add_development_dependency "bundler", "~> 2.1"

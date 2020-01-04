@@ -3,7 +3,9 @@ require 'json'
 module Hanami
   module Serializer
     class Base < Dry::Struct
-      constructor_type :schema
+      transform_types do |type|
+        type.constructor { |value| value.nil? ? Undefined : value  }
+      end
 
       class << self
         def serialized_fields(attributes)
