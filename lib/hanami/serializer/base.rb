@@ -1,10 +1,12 @@
 require 'json'
+require 'dry-struct'
 
 module Hanami
   module Serializer
     class Base < Dry::Struct
-      transform_types do |type|
-        type.constructor { |value| value.nil? ? Undefined : value  }
+      transform_types do |schema_key|
+        # Type-safely handle nil values of a field with no default value defined.
+        schema_key.constructor { |value| value.nil? ? Dry::Types::Undefined : value }
       end
 
       class << self
