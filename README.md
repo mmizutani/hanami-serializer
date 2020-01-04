@@ -1,6 +1,16 @@
-# Hanami::Serializer
+# Hanami::Serializer for ROM
 
-Simple solution for serializing you data in hanami apps.
+Simple solution for serializing your data in hanami apps. 
+
+## Note
+
+Based on the [original work by davydovanton](https://github.com/davydovanton/hanami-serializer) (no longer maintained), this fork repository added the following changes to support Hanami apps which directly uses Ruby Object Mapper (ROM) without relying on Hanami::Model, a wrapper of ROM, as the ORM layer:
+* Made compatible with rom-core 5.1.2 or above
+* Upgraded the dependencies (dry-struct, dry-types)
+* Dropped support for hanami-model (at least for now; hanami-model still depends on very old versions of dry-struct and dry-types.)
+* Expanded test coverage
+
+## Index
 
 * [Installation](#installation)
 * [Usage](#usage)
@@ -135,6 +145,11 @@ serializer.call           # => '{ "id":1, "name": "anton" }'
 JSON.generate(serializer) # => '{ "id":1, "name": "anton" }'
 ```
 
+You can also use [oj](https://github.com/ohler55/oj) for faster object marshalling:
+```ruby
+Oj.dump(serializer, mode: :compat, use_to_json: true) # => '{ "id":1, "name": "anton" }'
+```
+
 ### Nested
 You can use nested data structures. You have 2 ways how to use it
 
@@ -147,7 +162,7 @@ class UserWithAvatarSerializer < Hanami::Serializer::Base
 
   attribute :avatar, Types::Hash.schema(
     upload_file_name: Types::String,
-    upload_file_size: Types::Coercible::Int
+    upload_file_size: Types::Coercible::Integer
   )
 end
 ```
@@ -158,7 +173,7 @@ We can user other serializer as a type for attribute:
 ```ruby
 class AvatarSerializer < Hanami::Serializer::Base
   attribute :upload_file_name, Types::String
-  attribute :upload_file_size, Types::Coercible::Int
+  attribute :upload_file_size, Types::Coercible::Integer
 end
 
 class NestedUserSerializer < Hanami::Serializer::Base
