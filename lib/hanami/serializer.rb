@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'hanami/serializer/config'
 require 'hanami/serializer/base'
 require 'hanami/serializer/action'
