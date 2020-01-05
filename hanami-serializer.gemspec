@@ -25,9 +25,13 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "dry-struct", "~> 1.0"
   spec.add_runtime_dependency "dry-types", "~> 1.0"
 
-  spec.add_development_dependency "rom-core", "~> 5.1.2"
+  spec.add_development_dependency "activemodel", "~> 6.0"
+  spec.add_development_dependency "benchmark-ips"
   spec.add_development_dependency "bundler", "~> 2.1"
+  spec.add_development_dependency "fast_jsonapi", "~> 1.5"
+  spec.add_development_dependency "kalibera"
+  spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "oj", "~> 3.10"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "minitest", "~> 5.0"
+  spec.add_development_dependency "rom-core", "~> 5.1.2"
 end
