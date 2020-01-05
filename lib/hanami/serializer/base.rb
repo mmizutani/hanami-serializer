@@ -1,4 +1,3 @@
-require 'json'
 require 'dry-struct'
 
 module Hanami
@@ -25,7 +24,11 @@ module Hanami
       end
 
       def to_json(_ = nil)
-        JSON.generate(attributes_for_serialize(to_h))
+        if Hanami::Serializer.config.json_engine == :oj && defined?(Oj)
+          Oj.dump(attributes_for_serialize(to_h), mode: :compat, use_to_json: true)
+        else
+          JSON.generate(attributes_for_serialize(to_h))
+        end
       end
       alias_method :call, :to_json
 

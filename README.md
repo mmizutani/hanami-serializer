@@ -8,6 +8,7 @@ Based on the [original work by davydovanton](https://github.com/davydovanton/han
 * Made compatible with rom-core 5.1.2 or above
 * Upgraded the dependencies (dry-struct, dry-types)
 * Dropped support for hanami-model (at least for now; hanami-model still depends on very old versions of dry-struct and dry-types.)
+* Added a configurable option to switch the JSON marshalling engine from Ruby's builtin JSON to Oj
 * Expanded test coverage
 
 ## Index
@@ -148,6 +149,11 @@ JSON.generate(serializer) # => '{ "id":1, "name": "anton" }'
 You can also use [oj](https://github.com/ohler55/oj) for faster object marshalling:
 ```ruby
 Oj.dump(serializer, mode: :compat, use_to_json: true) # => '{ "id":1, "name": "anton" }'
+```
+or equivalently
+```ruby
+Hanami::Serializer.config.json_engine = :oj
+serializer.to_json # => '{ "id":1, "name": "anton" }'
 ```
 
 ### Nested

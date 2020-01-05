@@ -3,7 +3,7 @@ module Hanami
     module Action
       def send_json(response, status: 200)
         self.status = status
-        self.body = JSON.generate(response)
+        self.body = response.respond_to?(:to_json) ? response.to_json : JSON.generate(response)
       end
 
       def serializer
